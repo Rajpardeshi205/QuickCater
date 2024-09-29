@@ -1,13 +1,12 @@
 import React from "react";
 import Layout from "./Layout";
-import AboutBg from "../Images/about_bg.jpg";
 
 const About = () => {
   return (
     <Layout>
       <section
         className="bg-cover h-screen w-full flex items-center"
-        style={{ backgroundImage: `url(${AboutBg})` }}
+        style={{ backgroundImage: `url("./Images/about_bg.jpg)` }}
       >
         <div className="text-justify max-w-3xl mx-auto px-4 py-3">
           <p className="pb-4 text-center text-lg md:text-xl">

@@ -1,23 +1,23 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomePage from "./Pages/HomePage";
-import NoPage from "./Pages/NoPage";
-import Menu from "./Components/Menu";
-import About from "./Components/About";
-import Contact from "./Components/Contact";
-import Services from "./Components/Services";
-import ScrollTop from "./Components/ScrollTop";
-import DishInfo from "./Components/DishInfo";
-import CartPage from "./Components/CartPage";
-import Login from "./Login/login";
-import Signup from "./Login/signup";
-import UserDashboard from "./Dashboard/UserDashboard";
-import AdminDashboard from "./Dashboard/AdminDashboard";
-import AddProductPage from "./Dashboard/AddProductPage";
-import UpdateProductPage from "./Dashboard/UpdateProductPage";
-import MyState from "./context/myState";
+import HomePage from "/src/Pages/HomePage";
+import NoPage from "/src/Pages/NoPage";
+import Menu from "/src/Components/Menu";
+import About from "/src/Components/About";
+import Contact from "/src/Components/Contact";
+import Services from "/src/Components/Services";
+import ScrollTop from "/src/Components/ScrollTop";
+import DishInfo from "/src/Components/DishInfo";
+import CartPage from "/src/Components/CartPage";
+import Login from "/src/Login/login";
+import Signup from "/src/Login/signup";
+import UserDashboard from "/src/Dashboard/UserDashboard";
+import AdminDashboard from "/src/Dashboard/AdminDashboard";
+import AddProductPage from "/src/Dashboard/AddProductPage";
+import UpdateProductPage from "/src/Dashboard/UpdateProductPage";
+import MyState from "/src/context/myState";
 import { Toaster } from "react-hot-toast";
-import { ProtectedRouteForAdmin } from "./protectedRoute/ProtectedRouteForAdmin";
-import { ProtectedRouteForUser } from "./protectedRoute/ProtectedRouteForUser";
+import { ProtectedRouteForAdmin } from "/src/protectedRoute/ProtectedRouteForAdmin";
+import { ProtectedRouteForUser } from "/src/protectedRoute/ProtectedRouteForUser";
 
 const App = () => {
   return (

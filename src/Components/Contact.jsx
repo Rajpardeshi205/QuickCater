@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Layout from "./Layout";
-import AboutBg from "./Images/about_bg.jpg";
+import AboutBg from "../Images/about_bg.jpg";
 import { Button, Input } from "@material-tailwind/react";
 import { db } from "../firebase/FirebaseConfig";
 import { collection, addDoc } from "firebase/firestore";

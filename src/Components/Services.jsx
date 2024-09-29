@@ -1,12 +1,11 @@
 import React from "react";
 import Layout from "./Layout";
-import AboutBg from "./Images/about_bg.jpg";
 
 const Services = () => {
   return (
     <Layout>
       <section
-        style={{ backgroundImage: `url(${AboutBg})` }}
+        style={{ backgroundImage: `url("./Images/about_bg.jpg")` }}
         className="min-h-screen w-full flex flex-col items-center justify-center text-center"
       >
         <div

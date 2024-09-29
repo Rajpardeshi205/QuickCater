@@ -1,210 +1,165 @@
-import { Input, Option, Select, Textarea } from "@material-tailwind/react";
+import { useContext } from "react";
+import Loader from "../Components/Loader/Loader";
 import Layout from "../Components/Layout";
-import { useContext, useEffect, useState } from "react";
 import myContext from "../context/myContext";
-import { useNavigate, useParams } from "react-router-dom";
-import { Timestamp, doc, getDoc, setDoc } from "firebase/firestore";
-import { fireDB } from "../firebase/FirebaseConfig";
-import toast from "react-hot-toast";
 
-const categoryList = [
-  {
-    name: "North Indian Catering",
-  },
-  {
-    name: "Chinese Catering",
-  },
-  {
-    name: "Italian Catering",
-  },
-  {
-    name: "South Indian Catering",
-  },
-  {
-    name: "Barbecue Catering",
-  },
-  {
-    name: "Desserts Catering",
-  },
-  {
-    name: "Korean Catering",
-  },
-];
-const UpdateProductPage = () => {
+const UserDashboard = () => {
+  const user = JSON.parse(localStorage.getItem("users"));
+
   const context = useContext(myContext);
-  const { loading, setLoading, getAllProductFunction } = context;
-
-  const navigate = useNavigate();
-  const { id } = useParams();
-  console.log(id);
-
-  const [product, setProduct] = useState({
-    title: "",
-    price: "",
-    productImageUrl: "",
-    category: "",
-    description: "",
-    time: Timestamp.now(),
-    date: new Date().toLocaleString("en-US", {
-      month: "short",
-      day: "2-digit",
-      year: "numeric",
-    }),
-  });
-
-  const getSingleProductFunction = async () => {
-    setLoading(true);
-    try {
-      const productTemp = await getDoc(doc(fireDB, "products", id));
-      const product = productTemp.data();
-      setProduct({
-        title: product?.title,
-        price: product?.price,
-        productImageUrl: product?.productImageUrl,
-        category: product?.category,
-        description: product?.description,
-        quantity: product?.quantity,
-        time: product?.time,
-        date: product?.date,
-      });
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
-
-  const updateProduct = async () => {
-    setLoading(true);
-    try {
-      await setDoc(doc(fireDB, "products", id), product);
-      toast.success("Product Updated successfully");
-      getAllProductFunction();
-      setLoading(false);
-      navigate("/AdminDash");
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getSingleProductFunction();
-  }, []);
+  const { loading, getAllOrder } = context;
 
   return (
     <Layout>
-      <div
-        className="flex justify-center items-center h-screen"
-        style={{ backgroundImage: `url("./Images/about_bg.jpg")` }}
-      >
-        <div className="login_Form bg-transparent backdrop-blur-2xl rounded-[45px] shadow-[20px_20px_15px_10px_rgba(0,0,0,0.7)] transition-transform duration-300 hover:shadow-[10px_10px_15px_5px_rgba(0,0,0,0.5)] hover:translate-y-[-5px] px-8 py-6 border border-black  w-96">
-          <div className="mb-5">
-            <h2 className="text-center text-2xl font-bold text-red-400 ">
-              Update Dish
-            </h2>
-          </div>
+      <div className=" container mx-auto px-4 py-5 lg:py-8">
+        <div className="top ">
+          <div className=" bg-red-400 py-5 rounded-xl border border-red-900">
+            <div className="flex justify-center">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/2202/2202112.png"
+                alt=""
+              />
+            </div>
+            <div className="">
+              <h1 className=" text-center text-lg">
+                <span className=" font-bold">Name : </span>
+                {user?.name}
+              </h1>
 
-          <div className="mb-3">
-            <Input
-              type="text"
-              value={product.title}
-              onChange={(e) => {
-                setProduct({
-                  ...product,
-                  title: e.target.value,
-                });
-              }}
-              label="Dish Name"
-              color="red"
-            />
-          </div>
+              <h1 className=" text-center text-lg">
+                <span className=" font-bold">Email : </span>
+                {user?.email}
+              </h1>
 
-          <div className="mb-3">
-            <Input
-              type="number"
-              value={product.price}
-              onChange={(e) => {
-                setProduct({
-                  ...product,
-                  price: e.target.value,
-                });
-              }}
-              label="Dish Price"
-              color="red"
-            />
-          </div>
+              <h1 className=" text-center text-lg">
+                <span className=" font-bold">Date : </span>
+                {user?.date}
+              </h1>
 
-          <div className="mb-3">
-            <Input
-              type="text"
-              value={product.productImageUrl}
-              onChange={(e) => {
-                setProduct({
-                  ...product,
-                  productImageUrl: e.target.value,
-                });
-              }}
-              label="Dish Image Url"
-              color="red"
-            />
+              <h1 className=" text-center text-lg">
+                <span className=" font-bold">Role : </span>
+                {user?.role}
+              </h1>
+            </div>
           </div>
+        </div>
 
-          <div className="mb-3">
-            <select
-              value={product.category}
-              onChange={(e) => {
-                setProduct({
-                  ...product,
-                  category: e.target.value,
-                });
-              }}
-              className="w-full px-3 py-2 bg-transparent border border-gray-400 rounded-md outline-none focus:border-2 focus:border-red-500"
-              style={{ color: "#607d8b" }}
-              onFocus={(e) => (e.target.style.color = "red")}
-              onBlur={(e) => (e.target.style.color = "#607d8b")}
-            >
-              <option disabled>Select Dish Cuisines</option>
-              {categoryList.map((value, index) => {
-                const { name } = value;
+        <div className="bottom">
+          <div className="mx-auto my-4 max-w-6xl px-2 md:my-6 md:px-0">
+            <h2 className=" text-2xl lg:text-3xl font-bold">Order Details</h2>
+
+            <div className="flex justify-center relative top-10">
+              {loading && <Loader />}
+            </div>
+
+            {getAllOrder
+              .filter((obj) => obj.userid === user?.uid)
+              .map((order, index) => {
                 return (
-                  <option
-                    style={{ borderColor: "#607d8b" }}
-                    className="first-letter:uppercase"
-                    key={index}
-                    value={name}
-                  >
-                    {name}
-                  </option>
+                  <div key={index}>
+                    {order.cartItems.map((item, index) => {
+                      const {
+                        id,
+                        date,
+                        quantity,
+                        price,
+                        title,
+                        productImageUrl,
+                        category,
+                      } = item;
+                      const { status } = order;
+
+                      return (
+                        <div
+                          key={index}
+                          className="mt-5 flex flex-col overflow-hidden rounded-xl border border-red-900 md:flex-row"
+                        >
+                          <div className="w-full border-r border-red-900 bg-red-400 md:max-w-xs">
+                            <div className="p-8">
+                              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-1">
+                                <div className="mb-4">
+                                  <div className="text-sm font-semibold text-black">
+                                    Order Id
+                                  </div>
+                                  <div className="text-sm font-medium text-gray-900">
+                                    #{id}
+                                  </div>
+                                </div>
+
+                                <div className="mb-4">
+                                  <div className="text-sm font-semibold">
+                                    Date
+                                  </div>
+                                  <div className="text-sm font-medium text-gray-900">
+                                    {order.date}
+                                  </div>
+                                </div>
+
+                                <div className="mb-4">
+                                  <div className="text-sm font-semibold">
+                                    Total Amount
+                                  </div>
+                                  <div className="text-sm font-medium text-gray-900">
+                                    ₹ {price * quantity}
+                                  </div>
+                                </div>
+
+                                <div className="mb-4">
+                                  <div className="text-sm font-semibold">
+                                    Order Status
+                                  </div>
+                                  <div className="text-sm font-medium text-green-800 first-letter:uppercase">
+                                    {status}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          {/* right  */}
+                          <div className="flex-1">
+                            <div className="p-8">
+                              <ul className="-my-7 divide-y divide-gray-200">
+                                <li className="flex flex-col justify-between space-x-5 py-7 md:flex-row">
+                                  <div className="flex flex-1 items-stretch">
+                                    <div className="flex-shrink-0">
+                                      <img
+                                        className="h-40 w-40 rounded-lg border border-gray-200 object-contain"
+                                        src={productImageUrl}
+                                        alt="img"
+                                      />
+                                    </div>
+
+                                    <div className="ml-5 flex flex-col justify-between">
+                                      <div className="flex-1">
+                                        <p className="text-sm font-bold text-gray-900">
+                                          {title}
+                                        </p>
+                                        <p className="mt-1.5 text-sm font-medium text-gray-500">
+                                          {category}
+                                        </p>
+                                      </div>
+
+                                      <p className="mt-4 text-sm font-medium text-gray-500">
+                                        x {quantity}
+                                      </p>
+                                    </div>
+                                  </div>
+
+                                  <div className="ml-auto flex flex-col items-end justify-between">
+                                    <p className="text-right text-sm font-bold text-gray-900">
+                                      ₹ {price}
+                                    </p>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 );
               })}
-            </select>
-          </div>
-
-          <div className="mb-3">
-            <Textarea
-              name="description"
-              value={product.description}
-              onChange={(e) => {
-                setProduct({
-                  ...product,
-                  description: e.target.value,
-                });
-              }}
-              label="Product Description"
-              rows="5"
-              color="red"
-            ></Textarea>
-          </div>
-
-          <div className="mb-3">
-            <button
-              type="button"
-              onClick={updateProduct}
-              className="bg-red-500 hover:bg-red-600 w-full text-white text-center py-2 font-bold rounded-md "
-            >
-              Update Product
-            </button>
           </div>
         </div>
       </div>
@@ -212,4 +167,4 @@ const UpdateProductPage = () => {
   );
 };
 
-export default UpdateProductPage;
+export default UserDashboard;

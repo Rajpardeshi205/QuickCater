@@ -1,6 +1,5 @@
 import { Input, Option, Select, Textarea } from "@material-tailwind/react";
 import Layout from "../Components/Layout";
-import AboutBg from "/Public/Images/about_bg.jpg";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
@@ -86,7 +85,7 @@ const AddProductPage = () => {
     <Layout>
       <div
         className="flex justify-center items-center h-screen"
-        style={{ backgroundImage: `url(${AboutBg})` }}
+        style={{ backgroundImage: `url("./Images/about_bg.jpg")` }}
       >
         {loading && <Loader />}
 

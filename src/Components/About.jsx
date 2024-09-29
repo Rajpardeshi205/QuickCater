@@ -6,7 +6,7 @@ const About = () => {
     <Layout>
       <section
         className="bg-cover h-screen w-full flex items-center"
-        style={{ backgroundImage: `url("./Images/about_bg.jpg)` }}
+        style={{ backgroundImage: `url("./Images/about_bg.jpg")` }}
       >
         <div className="text-justify max-w-3xl mx-auto px-4 py-3">
           <p className="pb-4 text-center text-lg md:text-xl">

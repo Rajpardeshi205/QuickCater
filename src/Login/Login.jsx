@@ -1,5 +1,4 @@
 import Layout from "../Components/Layout";
-import AboutBg from "/Public/Images/about_bg.jpg";
 import { useContext, useState } from "react";
 import { Button, Input } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
@@ -67,7 +66,7 @@ const Login = () => {
     <Layout>
       <div
         className="flex justify-center items-center h-screen bg-cover"
-        style={{ backgroundImage: `url(${AboutBg})` }}
+        style={{ backgroundImage: `url("./Images/about_bg.jpg")` }}
       >
         <div className="flex justify-center relative top-20">
           {loading && <Loader />}

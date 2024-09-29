@@ -12,7 +12,7 @@ const OrderDetail = () => {
         </div>
 
         <div className="w-full overflow-x-auto">
-          <table className="w-full text-left border border-collapse sm:border-separate border-red-800 text-red-400">
+          <table className="w-full text-left border border-collapse sm:border-separate border-red-800 text-red-800">
             <tbody>
               <tr>
                 <th

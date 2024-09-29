@@ -13,7 +13,7 @@ const UserDashboard = () => {
     <Layout>
       <div className=" container mx-auto px-4 py-5 lg:py-8">
         <div className="top ">
-          <div className=" bg-pink-50 py-5 rounded-xl border border-pink-100">
+          <div className=" bg-red-400 py-5 rounded-xl border border-red-900">
             <div className="flex justify-center">
               <img
                 src="https://cdn-icons-png.flaticon.com/128/2202/2202112.png"
@@ -72,9 +72,9 @@ const UserDashboard = () => {
                       return (
                         <div
                           key={index}
-                          className="mt-5 flex flex-col overflow-hidden rounded-xl border border-pink-100 md:flex-row"
+                          className="mt-5 flex flex-col overflow-hidden rounded-xl border border-red-900 md:flex-row"
                         >
-                          <div className="w-full border-r border-pink-100 bg-pink-50 md:max-w-xs">
+                          <div className="w-full border-r border-red-900 bg-red-400 md:max-w-xs">
                             <div className="p-8">
                               <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-1">
                                 <div className="mb-4">

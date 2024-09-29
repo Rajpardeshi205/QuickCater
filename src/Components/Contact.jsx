@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Layout from "./Layout";
-import AboutBg from "../Images/about_bg.jpg";
 import { Button, Input } from "@material-tailwind/react";
 import { db } from "../firebase/FirebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
@@ -46,7 +45,7 @@ const Contact = () => {
     <Layout>
       <section
         className="bg-cover min-h-screen w-full flex flex-col items-center justify-center text-center"
-        style={{ backgroundImage: `url(${AboutBg})` }}
+        style={{ backgroundImage: `url("./Images/about_bg.jpg")` }}
       >
         <h1 className="text-4xl mb-8">Connect With Us</h1>
         <div className="flex flex-col items-center z-10 space-y-4">

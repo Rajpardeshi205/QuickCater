@@ -8,7 +8,6 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import myContext from "../context/myContext";
 import toast from "react-hot-toast";
 import Loader from "../Components/Loader/Loader";
-const AboutBg = "/Images/about_bg.jpg";
 
 const Signup = () => {
   const { loading, setLoading } = useContext(myContext);
@@ -79,7 +78,7 @@ const Signup = () => {
       </div>
       <div
         className="flex justify-center items-center min-h-screen p-4"
-        style={{ backgroundImage: `url(${AboutBg})`, backgroundSize: "cover" }}
+        style={{ backgroundImage: `url("./Images/about_bg.jpg")`, backgroundSize: "cover" }}
       >
         <div className="login_Form bg-white/30 backdrop-blur-2xl border border-white/20 p-6 md:p-8 text-black rounded-[45px] shadow-[20px_20px_15px_10px_rgba(0,0,0,0.7)] transition-transform duration-300 hover:shadow-[10px_10px_15px_5px_rgba(0,0,0,0.5)] hover:translate-y-[-5px] max-w-sm w-full">
           <div className="mb-5">

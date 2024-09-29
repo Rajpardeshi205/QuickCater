@@ -1,6 +1,5 @@
 import { Input, Option, Select, Textarea } from "@material-tailwind/react";
 import Layout from "../Components/Layout";
-import AboutBg from "/Public/Images/about_bg.jpg";
 import { useContext, useEffect, useState } from "react";
 import myContext from "../context/myContext";
 import { useNavigate, useParams } from "react-router-dom";
@@ -97,7 +96,7 @@ const UpdateProductPage = () => {
     <Layout>
       <div
         className="flex justify-center items-center h-screen"
-        style={{ backgroundImage: `url(${AboutBg})` }}
+        style={{ backgroundImage: `url("./Images/about_bg.jpg")` }}
       >
         <div className="login_Form bg-transparent backdrop-blur-2xl rounded-[45px] shadow-[20px_20px_15px_10px_rgba(0,0,0,0.7)] transition-transform duration-300 hover:shadow-[10px_10px_15px_5px_rgba(0,0,0,0.5)] hover:translate-y-[-5px] px-8 py-6 border border-black  w-96">
           <div className="mb-5">

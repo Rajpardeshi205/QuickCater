@@ -41,7 +41,7 @@ const ProductDetail = () => {
       </div>
 
       <div className="w-full overflow-x-auto mb-5">
-        <table className="w-full text-left border border-collapse sm:border-separate border-red-400 text-red-400">
+        <table className="w-full text-left border border-collapse sm:border-separate border-red-400 text-red-800">
           <tbody>
             <tr>
               <th
